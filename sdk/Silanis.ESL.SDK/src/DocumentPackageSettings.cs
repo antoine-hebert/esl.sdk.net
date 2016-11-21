@@ -89,6 +89,20 @@ namespace Silanis.ESL.SDK
             }
         }
 
+        private Nullable<bool> disableDownloadForUncompletedPackage = null;
+
+        public Nullable<bool> DisableDownloadForUncompletedPackage
+        {
+            get
+            {
+                return disableDownloadForUncompletedPackage;
+            }
+            set
+            {
+                disableDownloadForUncompletedPackage = value;
+            }
+        }
+
 		private Nullable<bool> hideWatermark = null;
 
 		public Nullable<bool> HideWatermark {
@@ -228,6 +242,9 @@ namespace Silanis.ESL.SDK
 
             if ( disableDeclineOther != null )
                 ceremonySettings.DisableDeclineOther = disableDeclineOther.Value;
+
+            if (disableDownloadForUncompletedPackage != null)
+                ceremonySettings.DisableDownloadForUncompletedPackage = disableDownloadForUncompletedPackage.Value;
 
             if ( hideWatermark != null )
 			    ceremonySettings.HideWatermark = hideWatermark.Value;

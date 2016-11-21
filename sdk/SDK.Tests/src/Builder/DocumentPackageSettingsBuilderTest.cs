@@ -64,6 +64,36 @@ namespace SDK.Tests
             Assert.IsFalse(without.ShowOwnerInPersonDropDown.Value);
             
         }
+
+        [Test]
+        public void DisableDownloadForUncompletedPackage_ShouldBeNullByDefault()
+        {
+            DocumentPackageSettingsBuilder builder = DocumentPackageSettingsBuilder.NewDocumentPackageSettings();
+
+            DocumentPackageSettings documentPackageSettings = builder.Build();
+
+            Assert.IsFalse(documentPackageSettings.DisableDownloadForUncompletedPackage.HasValue);
+        }
+
+        [Test]
+        public void DisableDownloadForUncompletedPackage_WithoutDownloadForUncompletedPackage_ShouldBeTrue()
+        {
+            DocumentPackageSettingsBuilder builder = DocumentPackageSettingsBuilder.NewDocumentPackageSettings();
+
+            DocumentPackageSettings documentPackageSettings = builder.WithoutDownloadForUncompletedPackage().Build();
+
+            Assert.IsTrue(documentPackageSettings.DisableDownloadForUncompletedPackage.Value);
+        }
+
+        [Test]
+        public void DisableDownloadForUncompletedPackage_WithDownloadForUncompletedPackage_ShouldBeFalse()
+        {
+            DocumentPackageSettingsBuilder builder = DocumentPackageSettingsBuilder.NewDocumentPackageSettings();
+
+            DocumentPackageSettings documentPackageSettings = builder.WithDownloadForUncompletedPackage().Build();
+
+            Assert.IsFalse(documentPackageSettings.DisableDownloadForUncompletedPackage.Value);
+        }
     }
 }
 

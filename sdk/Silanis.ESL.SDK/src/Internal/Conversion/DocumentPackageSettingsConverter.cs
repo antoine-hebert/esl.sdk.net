@@ -34,6 +34,7 @@ namespace Silanis.ESL.SDK
             ceremonySettings.OptOutReasons = sdkSettings.OptOutReasons;
             ceremonySettings.MaxAuthFailsAllowed = sdkSettings.MaxAuthAttempts;
             ceremonySettings.DisableDeclineOther = sdkSettings.DisableDeclineOther;
+            ceremonySettings.DisableDownloadForUncompletedPackage = sdkSettings.DisableDownloadForUncompletedPackage;
             ceremonySettings.DisableOptOutOther = sdkSettings.DisableOptOutOther;
 
             if (sdkSettings.EnableFirstAffidavit.HasValue) {
@@ -122,6 +123,9 @@ namespace Silanis.ESL.SDK
 
                 if (apiSettings.Ceremony.DisableDeclineOther.HasValue)
                     builder = (apiSettings.Ceremony.DisableDeclineOther.Value ? builder.WithoutDeclineOther() : builder.WithDeclineOther());
+
+                if (apiSettings.Ceremony.DisableDownloadForUncompletedPackage.HasValue)
+                    builder = (apiSettings.Ceremony.DisableDownloadForUncompletedPackage.Value ? builder.WithoutDownloadForUncompletedPackage() : builder.WithDownloadForUncompletedPackage());
 
                 if (apiSettings.Ceremony.DisableOptOutOther.HasValue)
                     builder = (apiSettings.Ceremony.DisableOptOutOther.Value ? builder.WithoutOptOutOther() : builder.WithOptOutOther());

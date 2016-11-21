@@ -23,6 +23,7 @@ namespace Silanis.ESL.SDK
         private Nullable<bool> showOwnerInPersonDropDown = null;
         private Nullable<bool> disableDeclineOther = null;
         private Nullable<bool> disableOptOutOther = null;
+        private Nullable<bool> disableDownloadForUncompletedPackage = null;
 
 		private string linkText = null;
 		private string linkTooltip = null;
@@ -228,6 +229,17 @@ namespace Silanis.ESL.SDK
             this.disableDeclineOther = true;
             return this;
         }
+        public DocumentPackageSettingsBuilder WithDownloadForUncompletedPackage()
+        {
+            this.disableDownloadForUncompletedPackage = false;
+            return this;
+        }
+
+        public DocumentPackageSettingsBuilder WithoutDownloadForUncompletedPackage()
+        {
+            this.disableDownloadForUncompletedPackage = true;
+            return this;
+        }
 
         public DocumentPackageSettingsBuilder WithOptOutOther()
         {
@@ -267,6 +279,7 @@ namespace Silanis.ESL.SDK
             result.EnableSecondAffidavit = enableSecondAffidavit;
             result.ShowOwnerInPersonDropDown = showOwnerInPersonDropDown;
             result.DisableDeclineOther = disableDeclineOther;
+            result.DisableDownloadForUncompletedPackage = disableDownloadForUncompletedPackage;
             result.DisableOptOutOther = disableOptOutOther;
 			result.LinkHref = linkHref;
 			result.LinkText = linkText;
@@ -294,6 +307,7 @@ namespace Silanis.ESL.SDK
             showOwnerInPersonDropDown = !apiPackageSettings.Ceremony.HidePackageOwnerInPerson;
             showLanguageDropDown = !apiPackageSettings.Ceremony.HideLanguageDropdown;
             disableDeclineOther = apiPackageSettings.Ceremony.DisableDeclineOther;
+            disableDownloadForUncompletedPackage = apiPackageSettings.Ceremony.DisableDownloadForUncompletedPackage;
             disableOptOutOther = apiPackageSettings.Ceremony.DisableOptOutOther;
 
             foreach (string declineReason in apiPackageSettings.Ceremony.DeclineReasons)

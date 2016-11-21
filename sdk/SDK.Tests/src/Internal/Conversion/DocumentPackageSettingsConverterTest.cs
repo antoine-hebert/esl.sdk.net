@@ -72,6 +72,7 @@ namespace SDK.Tests
             Assert.AreEqual(apiPackageSettings1.Ceremony.HidePackageOwnerInPerson, !sdkPackageSettings1.ShowOwnerInPersonDropDown);
             Assert.AreEqual(apiPackageSettings1.Ceremony.DisableFirstInPersonAffidavit, !sdkPackageSettings1.EnableFirstAffidavit);
             Assert.AreEqual(apiPackageSettings1.Ceremony.DisableSecondInPersonAffidavit, !sdkPackageSettings1.EnableSecondAffidavit);
+            Assert.AreEqual(apiPackageSettings1.Ceremony.DisableDownloadForUncompletedPackage, sdkPackageSettings1.DisableDownloadForUncompletedPackage);
         }
 
         [Test()]
@@ -105,6 +106,7 @@ namespace SDK.Tests
             Assert.AreEqual(apiPackageSettings1.Ceremony.HidePackageOwnerInPerson, !sdkPackageSettings1.ShowOwnerInPersonDropDown);
             Assert.AreEqual(apiPackageSettings1.Ceremony.DisableFirstInPersonAffidavit, !sdkPackageSettings1.EnableFirstAffidavit);
             Assert.AreEqual(apiPackageSettings1.Ceremony.DisableSecondInPersonAffidavit, !sdkPackageSettings1.EnableSecondAffidavit);
+            Assert.AreEqual(apiPackageSettings1.Ceremony.DisableDownloadForUncompletedPackage, sdkPackageSettings1.DisableDownloadForUncompletedPackage);
         }
 
         private Silanis.ESL.SDK.DocumentPackageSettings CreateTypicalSDKDocumentPackageSettings()
@@ -123,6 +125,7 @@ namespace SDK.Tests
                     .WithDeclineReason( "Decline reason Two" )
                     .WithDeclineReason( "Decline reason Three" )
                     .WithoutDeclineOther()
+                    .WithoutDownloadForUncompletedPackage()
                     .WithOptOutReason("Reason One")
                     .WithOptOutReason( "Reason Two" )
                     .WithOptOutReason( "Reason Three" )
@@ -170,6 +173,7 @@ namespace SDK.Tests
             apiCeremonySettings.DisableSecondInPersonAffidavit = true;
             apiCeremonySettings.HideLanguageDropdown = true;
             apiCeremonySettings.HidePackageOwnerInPerson = true;
+            apiCeremonySettings.DisableDownloadForUncompletedPackage = true;
 
             Style style = new Style();
             style.BackgroundColor = "white";
